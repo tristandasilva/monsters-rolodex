@@ -17,7 +17,7 @@ class App extends Component {
          .then(response => response.json())
          .then(users => {
             this.setState({ monsters: users.results });
-            console.log(this.state)
+            console.log(this.state);
          });
    }
 
@@ -27,8 +27,12 @@ class App extends Component {
 
    render() {
       const { monsters, searchField } = this.state;
-      const filteredMonsters = monsters.filter(monster =>
-         monster.name.first.toLowerCase().includes(searchField.toLowerCase())
+      const filteredMonsters = monsters.filter(
+         monster =>
+            monster.name.first
+               .toLowerCase()
+               .includes(searchField.toLowerCase()) ||
+            monster.name.last.toLowerCase().includes(searchField.toLowerCase())
       );
 
       return (
